@@ -19,4 +19,8 @@ RSpec.describe MoonBattery, type: :model do
     it { should validate_uniqueness_of(:mac_address) }
     it { should validate_uniqueness_of(:serial_number) }
   end
+
+  describe 'association with battery_configuration' do
+    it { should have_many(:battery_configurations).dependent(:destroy) }
+  end
 end

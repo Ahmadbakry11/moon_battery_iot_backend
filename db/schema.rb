@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,18 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_02_052140) do
+ActiveRecord::Schema[7.1].define(version: 20_241_102_052_140) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "moon_batteries", force: :cascade do |t|
-    t.string "mac_address", null: false
-    t.string "serial_number", null: false
-    t.datetime "last_contact_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["mac_address"], name: "index_moon_batteries_on_mac_address", unique: true
-    t.index ["serial_number"], name: "index_moon_batteries_on_serial_number", unique: true
+  create_table 'moon_batteries', force: :cascade do |t|
+    t.string 'mac_address', null: false
+    t.string 'serial_number', null: false
+    t.datetime 'last_contact_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['mac_address'], name: 'index_moon_batteries_on_mac_address', unique: true
+    t.index ['serial_number'], name: 'index_moon_batteries_on_serial_number', unique: true
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMoonBatteries < ActiveRecord::Migration[7.1]
   def change
     create_table :moon_batteries do |t|
