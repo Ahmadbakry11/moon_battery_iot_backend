@@ -10,4 +10,8 @@ class MoonBattery < ApplicationRecord
   validates :mac_address, :serial_number, presence: true
   validates :mac_address, :serial_number, uniqueness: true
   validates :mac_address, format: { with: MAC_ADDRESS_FORMAT, message: 'invalid MAC address' }
+
+  def ping
+    update(last_contact_at: Time.current)
+  end
 end
