@@ -2,7 +2,7 @@
 
 RSpec.describe MoonBatteriesController, type: :request do
   describe 'POST /register endpoint' do
-    before  { post '/register', params: moon_battery_params }
+    before  { post '/moon_batteries/register', params: moon_battery_params }
 
     context 'when the provided moon_battery_params are valid' do
       let!(:moon_battery_params) { { moon_battery: { mac_address: 'e5:ee:bf:2d:60:62' } } }
