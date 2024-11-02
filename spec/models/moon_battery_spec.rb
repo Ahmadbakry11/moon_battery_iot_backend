@@ -23,4 +23,13 @@ RSpec.describe MoonBattery, type: :model do
   describe 'association with battery_configuration' do
     it { should have_many(:battery_configurations).dependent(:destroy) }
   end
+
+  describe 'test the ping method in MoonBattery' do
+    let(:moon_battery) { create :moon_battery }
+
+    it 'should update last_contact_at to the current time' do
+      moon_battery.ping
+      expect(moon_battery.reload.last_contact_at).to be_within(1.second).of(Time.current)
+    end
+  end
 end
