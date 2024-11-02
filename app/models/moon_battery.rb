@@ -5,6 +5,8 @@ class MoonBattery < ApplicationRecord
 
   has_secure_token :serial_number
 
+  has_many :battery_configurations, dependent: :destroy
+
   validates :mac_address, :serial_number, presence: true
   validates :mac_address, :serial_number, uniqueness: true
   validates :mac_address, format: { with: MAC_ADDRESS_FORMAT, message: 'invalid MAC address' }

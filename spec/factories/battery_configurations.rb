@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :battery_configuration do
     config_name { "setting_#{Faker::Alphanumeric.unique.alphanumeric(number: 5)}" }
     config_value { "value_#{Faker::Alphanumeric.unique.alphanumeric(number: 5)}" }
-    battery { create :moon_battery }
+    moon_battery { create :moon_battery }
   end
 end
