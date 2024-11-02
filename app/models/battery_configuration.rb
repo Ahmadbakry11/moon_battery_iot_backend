@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BatteryConfiguration < ApplicationRecord
   belongs_to :moon_battery
 

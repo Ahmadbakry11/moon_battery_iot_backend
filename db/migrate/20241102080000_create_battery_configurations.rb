@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBatteryConfigurations < ActiveRecord::Migration[7.1]
   def change
     create_table :battery_configurations do |t|
@@ -8,6 +10,6 @@ class CreateBatteryConfigurations < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :battery_configurations, [:moon_battery_id, :config_name], unique: true
+    add_index :battery_configurations, %i[moon_battery_id config_name], unique: true
   end
 end

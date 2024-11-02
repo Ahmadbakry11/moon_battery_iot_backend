@@ -14,5 +14,5 @@ RSpec.describe BatteryConfiguration, type: :model do
 
   describe 'association between moon_battery and battery_configuration' do
     it { should belong_to(:moon_battery) }
-  end  
+  end
 end
