@@ -6,9 +6,9 @@ class MoonBatteriesController < ApplicationController
 
   def register
     @moon_battery = MoonBattery.create!(moon_battery_params)
-    
-    response = { 
-      serial_number: @moon_battery.serial_number, 
+
+    response = {
+      serial_number: @moon_battery.serial_number,
       auth_token: @moon_battery.auth_token
     }
 

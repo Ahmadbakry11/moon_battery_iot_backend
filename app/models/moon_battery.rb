@@ -4,7 +4,7 @@ class MoonBattery < ApplicationRecord
   MAC_ADDRESS_FORMAT = /\A([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})\Z/
 
   has_secure_token :serial_number
-  has_secure_token :auth_token
+  has_secure_token :auth_token, length: 36
 
   has_many :battery_configurations, dependent: :destroy
 
