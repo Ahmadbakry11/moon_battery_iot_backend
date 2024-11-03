@@ -7,5 +7,9 @@ module ResponseHandler
     def json_response(record, status = :ok)
       render json: record, status: status
     end
+
+    def json_unauthorized_response
+      render json: { error: { mesage: 'unauthorized battery' } }, status: :unauthorized
+    end
   end
 end
