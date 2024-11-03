@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BatteryConfigurationsController <  ApplicationController
+  before_action :authenticate_battery!, only: [:update]
   before_action :set_moon_battery, only: [:update]
 
   def update

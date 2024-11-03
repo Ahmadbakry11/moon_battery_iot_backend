@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class MoonBatteriesController < ApplicationController
+  before_action :authenticate_battery!, only: [:ping]
   before_action :set_moon_battery, only: [:ping]
 
   def register
     @moon_battery = MoonBattery.create!(moon_battery_params)
+    
     response = { 
       serial_number: @moon_battery.serial_number, 
       auth_token: @moon_battery.auth_token
