@@ -5,21 +5,21 @@ RSpec.describe BatteryConfigurationsController, type: :request do
     let!(:moon_battery) { create :moon_battery }
     let!(:serial_number) { moon_battery.serial_number }
 
-    before { put "/moon_batteries/#{serial_number}/configurations" , params: params}
+    before { put "/moon_batteries/#{serial_number}/configurations", params: params }
 
     context 'when the provided moon_battery serial number exists' do
       context 'when the provided params are all valid' do
-        let!(:params) {
+        let!(:params) do
           {
             configurations: [
               { config_name: 'setting1', config_value: 'value1' },
               { config_name: 'setting2', config_value: 'value2' }
             ]
           }
-        }
+        end
 
-        it 'returns status of 200 ok' do
-          expect(:reponse).to have_http_status(:ok)
+        it 'returns status of no_content' do
+          expect(response).to have_http_status(:no_content)
         end
 
         it 'saves the configurations' do
@@ -29,16 +29,16 @@ RSpec.describe BatteryConfigurationsController, type: :request do
       end
 
       context 'when the provided params are all invalid' do
-        let!(:params) {
+        let!(:params) do
           {
             configurations: [
               { config_name: '', config_value: 'value1' }
             ]
           }
-        }
+        end
 
         it 'does not save the configurations and return an error' do
-          expect(:reponse).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
       end
     end
@@ -46,16 +46,16 @@ RSpec.describe BatteryConfigurationsController, type: :request do
     context 'when the provided moon_battery serial number does not exist' do
       let!(:serial_number) { 'invalid_serail_number' }
 
-      let!(:params) {
+      let!(:params) do
         {
           configurations: [
             { config_name: 'setting1', config_value: 'value1' }
           ]
         }
-      }
+      end
 
       it 'returns a not_found error' do
-        expect(:reponse).to have_http_status(:not_found)
+        expect(response).to have_http_status(:not_found)
       end
     end
   end

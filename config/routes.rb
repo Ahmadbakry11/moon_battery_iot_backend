@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do
       put :ping
     end
+
+    resource :configurations, only: :update, controller: 'battery_configurations'
   end
 
   get 'up' => 'rails/health#show', as: :rails_health_check

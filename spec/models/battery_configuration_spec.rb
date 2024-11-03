@@ -18,12 +18,12 @@ RSpec.describe BatteryConfiguration, type: :model do
 
   describe 'update_collection method for updating multiple configurations' do
     let!(:moon_battery) { create :moon_battery }
-    let!(:configurations) {
+    let!(:configurations) do
       [
         { config_name: 'setting1', config_value: 'value1' },
         { config_name: 'setting2', config_value: 'value2' }
       ]
-    }
+    end
 
     it 'should update or create configurations of the moon_battery' do
       BatteryConfiguration.update_collection(moon_battery, configurations)
