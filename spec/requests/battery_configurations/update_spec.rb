@@ -3,6 +3,7 @@
 RSpec.describe BatteryConfigurationsController, type: :request do
   describe 'configurations endpoint' do
     let!(:moon_battery) { create :moon_battery }
+    let!(:unauthorized_moon_battery) { create :moon_battery }
     let!(:serial_number) { moon_battery.serial_number }
     let!(:params) do
       {
@@ -52,6 +53,14 @@ RSpec.describe BatteryConfigurationsController, type: :request do
 
           it 'returns a not_found error' do
             expect(response).to have_http_status(:not_found)
+          end
+        end
+
+        context 'when the current battery is authenticated but is trying to update another battery configurations' do
+          before { put "/moon_batteries/#{serial_number}/configurations", params: params, headers: { 'Authorization' => unauthorized_moon_battery.auth_token } }
+          
+          it 'returns forbidden status error' do
+            expect(response).to have_http_status(:forbidden)
           end
         end
       end
