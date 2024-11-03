@@ -5,6 +5,8 @@ class MoonBatteriesController < ApplicationController
   before_action :set_moon_battery, only: [:ping]
 
   def register
+    skip_authorization
+
     @moon_battery = MoonBattery.create!(moon_battery_params)
 
     response = {
@@ -16,6 +18,8 @@ class MoonBatteriesController < ApplicationController
   end
 
   def ping
+    authorize @moon_battery, :ping?
+
     @moon_battery.ping
 
     head :no_content

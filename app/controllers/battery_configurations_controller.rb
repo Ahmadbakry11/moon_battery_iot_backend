@@ -5,6 +5,8 @@ class BatteryConfigurationsController < ApplicationController
   before_action :set_moon_battery, only: [:update]
 
   def update
+    authorize @moon_battery, :update?
+
     BatteryConfiguration.update_collection(@moon_battery, params[:configurations])
 
     head :no_content
