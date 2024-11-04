@@ -18,7 +18,7 @@ RSpec.describe MoonBatteriesController, type: :request do
 
       it 'does not create the moon battery and return an error' do
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(json_body['message']).to match(/Validation failed/)
+        expect(json_body['error']['message']).to match(/Validation failed/)
       end
     end
   end
