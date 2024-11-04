@@ -13,7 +13,7 @@ module ExceptionHandler
     end
 
     rescue_from Pundit::NotAuthorizedError do |e|
-      json_response({ error: { message: e.message } }, :forbidden)
+      json_response({ error: { message: 'Access Forbidden' } }, :forbidden)
     end
   end
 end
