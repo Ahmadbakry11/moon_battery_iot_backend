@@ -15,5 +15,14 @@ module ExceptionHandler
     rescue_from Pundit::NotAuthorizedError do |e|
       json_response({ error: { message: 'Access Forbidden' } }, :forbidden)
     end
+
+    rescue_from ActiveRecord::ConnectionNotEstablished, with: :database_unavailable
+    rescue_from PG::ConnectionBad, with: :database_unavailable
+  end
+
+  private
+
+  def database_unavailable
+    render json: { error: { message: 'Database server is currently unavailable. Please try again later.' } }, status: :service_unavailable
   end
 end
